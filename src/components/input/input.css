@@ -1,0 +1,23 @@
+.input {
+    display: block;
+    font-size: 1.4rem;
+   color: blue;
+    outline: none;
+    border-radius: .5rem;
+    margin: 2rem;
+    padding: 2rem;
+    border: .3rem solid lightgray;
+    cursor: pointer;
+}
+.imagebox {
+    width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.inputBox{
+    width: 100%;
+}
+.hide{
+    display: none;
+}

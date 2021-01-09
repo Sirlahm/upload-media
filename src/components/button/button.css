@@ -1,0 +1,18 @@
+.btn {
+    cursor: pointer;
+    border-radius: .3rem;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+}
+.btn-green {
+    background-color: lightgreen;
+    color: white;
+
+}
+
+.btn-cancel {
+    background-color: lightgrey;
+    color: black;
+
+}
