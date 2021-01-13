@@ -9,7 +9,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className='Main'>
+    <div className='bg-gray-50 w-full flex justify-items-center min-h-screen'>
           <Box/>
           
     </div>

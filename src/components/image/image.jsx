@@ -1,11 +1,11 @@
 import React from 'react';
 
-import './image.css';
+
 
 const image = props => (
    
   <div
-    className="image"
+    className='w-3/8 h-20 bg-no-repeat'
     style={{
       backgroundImage: `url('${props.imageUrl}')`,
       backgroundSize:  'cover',

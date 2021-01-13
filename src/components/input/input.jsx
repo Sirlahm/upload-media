@@ -1,68 +1,38 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import UploadProgress from "../upload-progress/uploadProgress";
+import { setUploadFile } from "../../redux/upload/upload.action";
 
-import {size} from 'lodash'
-import UploadProgress from '../upload-progress/uploadProgress'
+const Input = (props) => {
+  const [imagePreview, setImagePreview] = useState(false);
+  const fileProgress = useSelector((state) => state.uploadReducer.fileProgress);
+  const dispatch = useDispatch();
 
-import {setUploadFile} from '../../redux/upload/upload.action'
-import './input.css'
+  const handleChange = (e) => {
+    setImagePreview(true);
+    dispatch(setUploadFile(e.target.files));
+  };
 
- 
+  return (
+    <div>
+      {imagePreview && <UploadProgress />}
+      <div className="w-full flex my-7">
+        <label
+          htmlFor="file"
+          className="text-center w-3/9 cursor-pointer p-3 border border-gray-500 outline-none rounded inline-block w-3/4 mx-auto text-blue-500"
+        >
+          {Object.values(fileProgress).length ? "+Add More" : "+Add Media"}
+        </label>
+        <input
+          multiple
+          onChange={handleChange}
+          className="hidden"
+          type="file"
+          id={"file"}
+        />
+      </div>
+    </div>
+  );
+};
 
-
-
-class Input extends React.Component {
-    constructor() {
-        super()
-
-        this.state = {
-            imagePreview: false,
-            check : true
-        }
-    }
-
-    
-handleChange= (e) => {
-           this.setState({imagePreview:true})
-            this.props.setUploadFile(e.target.files)
-            this.setState({check:false})
-}
-
-
-
-        render() {
-
-            return(
-            <div className={'inputBox'}>
-                    {this.state.imagePreview? 
-                    null :
-                    <div>
-                        <label htmlFor="file" className='input'>+Add Media</label>
-                        <input multiple onChange={this.handleChange} className='hide input' type="file" id={"file"}/>
-                    </div>
-                    }
-
-                    {this.state.imagePreview ?<div className={'imagebox'}>
-                        <UploadProgress/>
-                        <div>
-                        <label htmlFor="file" className='input'>{size(this.props.fileProgress) ?'+Add More':'+Add Media'}</label>
-                        <input multiple onChange={this.handleChange} className='hide input' type="file" id={"file"}/>
-                    </div>
-                    </div>: null}
-
-            </div>
-         
-                )
-                }
-}
-
-const mapStateToProps = state => ({
-  fileProgress: state.uploadReducer.fileProgress
-})
-
-
-const mapDispatchToProps = dispatch => ({
-  setUploadFile: files => dispatch(setUploadFile(files))
-})
-
-export default connect(mapStateToProps,mapDispatchToProps)(Input)
+export default Input;

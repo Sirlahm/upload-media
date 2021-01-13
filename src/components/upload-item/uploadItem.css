@@ -1,4 +1,4 @@
-.wrapperItem{
+/* .wrapperItem{
     display: flex;
     margin-top: 2rem;
 }
@@ -9,7 +9,7 @@
 }
 .progressBar{
     align-items: center;
-    /* justify-content: center; */
+ 
     border-radius: .3rem;
     width: 100%;
     background-color: lightgrey;
@@ -47,4 +47,4 @@
 .cancel:hover{
     color: red;
 }
-
+ */

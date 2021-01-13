@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
 
-import './button.css'
+const Button = (props) => {
+  const { className } = props;
+  return (
+    <button
+      className={`${className}  cursor-pointer px-4 py-2.5 rounded border-none text-sm text-white  focus:outline-none `}
+    >
+      {props.children}
+    </button>
+  );
+};
 
-const Button =(props) => (
-
-<button className={`${props.children==='Save'?'btn-green':'btn-cancel'} btn`}>{props.children}</button>
-
-)
-
-export default Button
+export default Button;
